@@ -1,7 +1,26 @@
 import { Button, TextField } from "@mui/material";
-import React from "react";
+import React, { useRef, useState } from "react";
+import "./SendLetterStyles.css";
+import axios from "axios";
 
 const SendLetter = () => {
+  const [userName, setUserName] = useState("");
+  const [userWish, setUserWish] = useState("");
+
+  async function sendWishToSanta() {
+    console.log(userName);
+    console.log(userWish);
+
+    const WISH_SEND_URI = "http://localhost:3001/postLetter";
+    const requestBody = {
+      userName: userName,
+      userWish: userWish,
+    };
+    var sendWishResponse = await axios.post(WISH_SEND_URI, requestBody);
+    console.log(sendWishResponse.status);
+    console.log(sendWishResponse.data);
+  }
+
   return (
     <>
       <div className="page-body">
@@ -18,22 +37,29 @@ const SendLetter = () => {
         {/* input fields */}
         <div className="center-container">
           <TextField
-            id="outlined-basic"
+            id="outlined-basic userName"
+            type="text"
             label="who are you ?"
             variant="outlined"
             className="input-width"
+            onChange={(event) => setUserName(event.target.value)}
+            value={userName}
           />
 
           <TextField
-            id="outlined-multiline-static"
+            id="outlined-multiline-static userWish"
             label="what do you want for christmas?"
             multiline
             rows={5}
             className="input-width"
+            onChange={(event) => setUserWish(event.target.value)}
+            value={userWish}
           />
 
           {/* send mail to santa button */}
-          <Button variant="contained">send to santa</Button>
+          <Button variant="contained" onClick={sendWishToSanta}>
+            send to santa
+          </Button>
         </div>
       </div>
     </>

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import SendLetter from "./components/SendLetter";
+import SendLetter from "./components/SendLetterComp/SendLetter";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>

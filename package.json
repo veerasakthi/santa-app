@@ -4,10 +4,12 @@
   "description": "A simple Node app built on Express, instantly up and running.",
   "main": "server.js",
   "scripts": {
-    "start:vite": "sudo vite --port 3000",
-    "start": "node -r dotenv/config server.js"
+    "start": "vite --port 3000 & nodemon server.js"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.8",
+    "@emotion/styled": "^11.10.8",
+    "@mui/material": "^5.12.2",
     "@vitejs/plugin-react": "^3.1.0",
     "body-parser": "^1.20.2",
     "dotenv": "^16.0.3",
@@ -21,6 +23,7 @@
     "@types/react": "^18.0.34",
     "@types/react-dom": "^18.0.11",
     "autoprefixer": "^10.4.14",
+    "nodemon": "^2.0.20",
     "postcss": "^8.4.23",
     "tailwindcss": "^3.3.2",
     "typescript": "^5.0.4",

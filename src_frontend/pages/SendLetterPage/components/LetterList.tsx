@@ -8,6 +8,7 @@ import {
   Divider,
   Chip,
 } from "@mui/material";
+import { deepOrange, grey } from "@mui/material/colors";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -59,8 +60,9 @@ const LetterList = () => {
               <ListItem alignItems="flex-start">
                 <ListItemAvatar>
                   <Avatar
+                    sx={{ bgcolor: grey[200], width: 50, height: 50 }}
                     alt={letter["userName"]}
-                    src="/assets/images/todo.jpg"
+                    src="/assets/images/santa-claus.png"
                   />
                 </ListItemAvatar>
                 <ListItemText

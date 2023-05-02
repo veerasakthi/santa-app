@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   Alert,
   Button,
@@ -6,9 +7,8 @@ import {
   TextField,
 } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
-import "./SendLetterStyles.css";
-import axios from "axios";
 import { sleep } from "./helper";
+import "./SendLetterStyles.css";
 import LetterList from "./components/LetterList";
 import SnackBarCommon from "./components/SnackBar";
 
@@ -31,11 +31,12 @@ const SendLetter = () => {
     };
     var response = await axios.post(WISH_SEND_URI, requestBody);
 
-    // hide loading
-    await sleep(2);
-    setIsLoading(false);
-
     if (response.status == 200 && response.data.status == "success") {
+      // sleep for loading
+      await sleep(2);
+      // clear the values from fields
+      setUserName("");
+      setUserWish("");
       // show alert
       setOpenSucess(true);
       // hide alert
@@ -51,6 +52,8 @@ const SendLetter = () => {
       await sleep(2);
       setOpenError(false);
     }
+    // loading false
+    setIsLoading(false);
   }
 
   // ui code
@@ -65,7 +68,10 @@ const SendLetter = () => {
             <div className="heading-margin">
               <h1 className="heading-title"> A letter to Santa! 🎄</h1>
               <div className="head-img-div">
-                <img className="head-img" src="/assets/images/xmas_img_2.png" />
+                <img
+                  className="head-img"
+                  src="/assets/images/xmas_img_intro.png"
+                />
               </div>
               <h2 className="text-1xl text-center">
                 Ho ho ho, what you want for christmas?
@@ -135,6 +141,3 @@ const SendLetter = () => {
 };
 
 export default SendLetter;
-
-// code to short cut to generate export using es7+
-// rafce

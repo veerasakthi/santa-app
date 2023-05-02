@@ -18,7 +18,7 @@ async function mailSender(subject, body) {
     // const EMAIL_FROM = process.env.EMAIL_FROM;
     // const EMAIL_TO = process.env.EMAIL_TO;
 
-    // remove after testing
+    // remove after testing [ TODO remove later while deploying ]
     const EMAIL_PORT = "587";
     const EMAIL_HOST = "smtp.ethereal.email";
     const EMAIL_AUTH_USER = "magali.lowe53@ethereal.email";

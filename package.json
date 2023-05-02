@@ -4,7 +4,9 @@
   "description": "A simple Node app built on Express, instantly up and running.",
   "main": "server.js",
   "scripts": {
-    "start": "vite --port 3000 & nodemon src_backend/server.js"
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon src_backend/server.js",
+    "client": "vite --port 3000"
   },
   "dependencies": {
     "@emotion/react": "^11.10.8",
@@ -13,14 +15,15 @@
     "@vitejs/plugin-react": "^3.1.0",
     "axios": "^1.4.0",
     "body-parser": "^1.20.2",
+    "concurrently": "^8.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "node-cache": "^5.1.2",
     "node-cron": "^3.0.2",
     "nodemailer": "^6.9.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {

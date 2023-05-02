@@ -6,14 +6,13 @@ import {
   ListItemText,
   Typography,
   Divider,
+  Chip,
 } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 
 const LetterList = () => {
   const [santaLetterList, setSantaLetterList] = useState([]);
-  // counter for reload
-  const [count, setCount] = useState(0);
 
   useEffect(() => {
     // get letter list on init
@@ -80,6 +79,10 @@ const LetterList = () => {
                     </React.Fragment>
                   }
                 />
+
+                {letter["emailFlag"] == 1 && (
+                  <Chip color="success" label="sent" size="small" />
+                )}
               </ListItem>
               <Divider variant="inset" component="li" />
             </div>

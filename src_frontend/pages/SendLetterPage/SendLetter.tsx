@@ -3,7 +3,6 @@ import {
   Button,
   CircularProgress,
   Divider,
-  Snackbar,
   TextField,
 } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
@@ -11,18 +10,19 @@ import "./SendLetterStyles.css";
 import axios from "axios";
 import { sleep } from "./helper";
 import LetterList from "./components/LetterList";
+import SnackBarCommon from "./components/SnackBar";
 
 const SendLetter = () => {
   const [userName, setUserName] = useState("");
   const [userWish, setUserWish] = useState("");
-  const [open, setOpen] = React.useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [openSucess, setOpenSucess] = React.useState(false);
+  const [openError, setOpenError] = React.useState(false);
+  const [lastErrorMsg, setLastErrorMsg] = React.useState("");
 
   // send letter to santa function
   async function sendWishToSanta() {
     setIsLoading(true);
-    console.log(userName);
-    console.log(userWish);
 
     const WISH_SEND_URI = "http://localhost:3001/santa/putSantaLetter";
     const requestBody = {
@@ -30,8 +30,6 @@ const SendLetter = () => {
       wish: userWish,
     };
     var response = await axios.post(WISH_SEND_URI, requestBody);
-    console.log(response.status);
-    console.log(response.data);
 
     // hide loading
     await sleep(2);
@@ -39,23 +37,21 @@ const SendLetter = () => {
 
     if (response.status == 200 && response.data.status == "success") {
       // show alert
-      setOpen(true);
+      setOpenSucess(true);
       // hide alert
       await sleep(2);
-      setOpen(false);
+      setOpenSucess(false);
+    } else {
+      // show alert
+      setLastErrorMsg(
+        response.data.message ? response.data.message : "something went wrong"
+      );
+      setOpenError(true);
+      // hide alert
+      await sleep(2);
+      setOpenError(false);
     }
   }
-
-  const handleClose = (
-    event?: React.SyntheticEvent | Event,
-    reason?: string
-  ) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setOpen(false);
-  };
 
   // ui code
   return (
@@ -118,23 +114,21 @@ const SendLetter = () => {
         </div>
 
         {/* alert message */}
-        <Snackbar
-          open={open}
-          autoHideDuration={3000}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: "top",
-            horizontal: "right",
-          }}
-        >
-          <Alert
-            severity="success"
-            sx={{ width: "100%" }}
-            onClose={handleClose}
-          >
-            This is a success message!
-          </Alert>
-        </Snackbar>
+        {openSucess && (
+          <SnackBarCommon
+            open={openSucess}
+            status="success"
+            message="wishes sent to santa!"
+          ></SnackBarCommon>
+        )}
+
+        {openError && (
+          <SnackBarCommon
+            open={openError}
+            status="error"
+            message={lastErrorMsg}
+          ></SnackBarCommon>
+        )}
       </div>
     </>
   );

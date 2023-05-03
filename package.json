@@ -1,40 +1,24 @@
 {
-  "name": "santa-app",
-  "version": "0.0.1",
-  "description": "A simple Node app built on Express, instantly up and running.",
+  "name": "new-santa-app",
+  "version": "1.0.0",
+  "description": "By default for anonymous users (non logged in), your code and app will only remain on glitch.com for 5 days. In order to not lose your challenge, please create a glitch.com account and log in to glitch.com before proceeding.",
   "main": "server.js",
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "nodemon src_backend/server.js",
-    "client": "vite --port 3000"
+    "start": "nodemon server.js"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.8",
-    "@emotion/styled": "^11.10.8",
-    "@mui/material": "^5.12.2",
-    "@vitejs/plugin-react": "^3.1.0",
     "axios": "^1.4.0",
     "body-parser": "^1.20.2",
-    "concurrently": "^8.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "node-cache": "^5.1.2",
     "node-cron": "^3.0.2",
     "nodemailer": "^6.9.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.34",
-    "@types/react-dom": "^18.0.11",
-    "autoprefixer": "^10.4.14",
-    "nodemon": "^2.0.20",
-    "postcss": "^8.4.23",
-    "tailwindcss": "^3.3.2",
-    "typescript": "^5.0.4",
-    "vite": "^4.2.1"
+    "nodemon": "^2.0.20"
   },
   "engines": {
     "node": "16.x"
@@ -47,5 +31,6 @@
     "node",
     "glitch",
     "express"
-  ]
+  ],
+  "author": ""
 }

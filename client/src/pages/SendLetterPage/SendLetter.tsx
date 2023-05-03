@@ -1,12 +1,6 @@
 import axios from "axios";
-import {
-  Alert,
-  Button,
-  CircularProgress,
-  Divider,
-  TextField,
-} from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
+import { Button, CircularProgress, Divider, TextField } from "@mui/material";
+import React, { useState } from "react";
 import { sleep } from "./helper";
 import "./SendLetterStyles.css";
 import LetterList from "./components/LetterList";
@@ -70,7 +64,7 @@ const SendLetter = () => {
               <div className="head-img-div">
                 <img
                   className="head-img"
-                  src="/assets/images/xmas_img_intro.png"
+                  src="./assets/images/xmas_img_intro.png"
                 />
               </div>
               <h2 className="text-1xl text-center">

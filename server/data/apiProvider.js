@@ -9,7 +9,7 @@ const axios = require("axios");
 const getUserList = async () => {
   // get user list from local
   let usersList = JSON.parse(
-    fs.readFileSync("src_backend/app/data/local_resource/users.json", "utf8")
+    fs.readFileSync("server/data/local_resource/users.json", "utf8")
   );
 
   return usersList;
@@ -31,10 +31,7 @@ const getProfileList = async () => {
   // get user list from local
 
   let profileList = JSON.parse(
-    fs.readFileSync(
-      "src_backend/app/data/local_resource/userProfiles.json",
-      "utf8"
-    )
+    fs.readFileSync("server/data/local_resource/userProfiles.json", "utf8")
   );
 
   return profileList;

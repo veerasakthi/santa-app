@@ -29,7 +29,7 @@ const LetterList = () => {
   }, []);
 
   function getLetterList() {
-    const LETTER_LIST_URI = "http://localhost:3001/santa/getLetters";
+    const LETTER_LIST_URI = "http://localhost:3000/santa/getLetters";
     axios
       .post(LETTER_LIST_URI, {})
       .then(function (response) {

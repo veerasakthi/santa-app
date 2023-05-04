@@ -1,24 +1,3 @@
-# IMPORTANT! READ before starting
-
-By default for anonymous users (non logged in), your code and app will only remain on glitch.com for 5 days.
-In order to not lose your challenge, please create a glitch.com account and log in to glitch.com before proceeding.
-
-The following README contains instructions to guide you through the coding challenge, please read them carefully.
-
-# Nodejs coding challenge:
-
-## How to create and submit your app using glitch
-
-1. **Login to glitch**: make sure you are logged in to glitch.com
-
-2. **Clone**: Go to this URL: https://glitch.com/~nodejs-santa-app and click the `Remix your own` button to clone the code. This will copy all the code to a new, randomly generated URL (e.g. https://glitch.com/edit/#!/capable-toothpaste). This is your URL to code on, no other candidates will have this URL.
-
-3. **Code**: You can edit the code directly in the Glitch editor or use your editor of choice (VSCode, Sublime, etc) and copy paste the files into Glitch. Git import and export is also available in the Tools menu on the bottom left. How you edit the code is entirely up to you, so long as your finished work is viewable at the URL created in the previous step.
-
-> **NOTE**: Click `Show` in the header to see your app live. Updates to your code will instantly deploy and update live.
-
-4. **Turn in**: When you finish coding, send your URL to us so we can review your code.
-
 ## Objectives overview:
 
 The webapp should display a form for children to enter their id and a free text message to santa.
@@ -28,9 +7,6 @@ When submitting the form, the server should check:
 1.  that the child is registered
 2.  that the child is less than 10 years old.
     To this purpose, the server can fetch user and profiles data in JSON format from:
-
-- https://raw.githubusercontent.com/alj-devops/santa-data/master/userProfiles.json
-- https://raw.githubusercontent.com/alj-devops/santa-data/master/users.json
 
 If the child is not registered (no match for the user id) or more than 10years old, the webapp should display a basic error page with an error message explaining the problem.\
 If the child is registered and less than 10 years old, the server should show a page indicating that the request has been received.
@@ -61,7 +37,3 @@ Email sender should be set as do_not_reply@northpole.com, and sent to santa@nort
 - App architecture (folder structure, configuration management...)
 - Documentation (why did you choose to change or add a package...)
 
-## Tips on usage of glitch
-
-Click `Show` in the header to see your app live. Updates to your code will instantly deploy and update live.
-When your app is running, you can access logs and console using the "Tools" button at the bottom left.

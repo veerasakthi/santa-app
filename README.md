@@ -1,67 +1,99 @@
-# IMPORTANT! READ before starting
 
-By default for anonymous users (non logged in), your code and app will only remain on glitch.com for 5 days.
-In order to not lose your challenge, please create a glitch.com account and log in to glitch.com before proceeding.
+# Santa app
 
-The following README contains instructions to guide you through the coding challenge, please read them carefully.
+A santa app is written in nodejs and reactjs. This app has no database but used a in-memory for storing the data that are received through APIs.
 
-# Nodejs coding challenge:
+## Features
+#### Implemented
+- validation check (age, is registered child)
+- store the child's wish in-memory
+- every 15 seconds the (not yet sent) pending wishes are sent to santa (cron)
 
-## How to create and submit your app using glitch
+#### Additional features implemented
+- view the stored wishes in a list view (polling)
+- once the mail is sent to santa `sent` bage in marked on screen
+- web view and mobile view support
 
-1. **Login to glitch**: make sure you are logged in to glitch.com
+#### Could have been done 😭
+- API endpoint protection (JWT)
+- instead of expressJS could have used nestJS for better readability of code
+- better documentation
+- unit testing
 
-2. **Clone**: Go to this URL: https://glitch.com/~nodejs-santa-app and click the `Remix your own` button to clone the code. This will copy all the code to a new, randomly generated URL (e.g. https://glitch.com/edit/#!/capable-toothpaste). This is your URL to code on, no other candidates will have this URL.
+## FAQ
 
-3. **Code**: You can edit the code directly in the Glitch editor or use your editor of choice (VSCode, Sublime, etc) and copy paste the files into Glitch. Git import and export is also available in the Tools menu on the bottom left. How you edit the code is entirely up to you, so long as your finished work is viewable at the URL created in the previous step.
+#### Do @veerasakthi know reactjs ?
 
-> **NOTE**: Click `Show` in the header to see your app live. Updates to your code will instantly deploy and update live.
+No I don't know react (I'm from angular and flutter background). 
 
-4. **Turn in**: When you finish coding, send your URL to us so we can review your code.
+I completed a `crash course` online just before starting this challenge. (only features that are required for this challenge)
 
-## Objectives overview:
+#### Do I like react
 
-The webapp should display a form for children to enter their id and a free text message to santa.
+yes react is interesting.
+## NPM pakages used
 
-When submitting the form, the server should check:
+| Packages             | Description                                               |
+| ----------------- | ------------------------------------------------------------ |
+| axios             | http client library                                          |
+| vite              |  build tool similar to webpack                               |
+| node-cache        | in-memory cache for storing data                             |
+| node-cron         | job schedular                                                |
+| nodemailer        | for sending emails                                           |
+| uuid              | for unique id generation                                     |
 
-1.  that the child is registered
-2.  that the child is less than 10 years old.
-    To this purpose, the server can fetch user and profiles data in JSON format from:
 
-- https://raw.githubusercontent.com/alj-devops/santa-data/master/userProfiles.json
-- https://raw.githubusercontent.com/alj-devops/santa-data/master/users.json
+## Demo
 
-If the child is not registered (no match for the user id) or more than 10years old, the webapp should display a basic error page with an error message explaining the problem.\
-If the child is registered and less than 10 years old, the server should show a page indicating that the request has been received.
+https://pentagonal-denim-basket.glitch.me/  - Glitch Me
 
-Every 15seconds, the server should send an email with information on all pending (not yet sent) requests including:
+https://github.com/veerasakthi/santa-app
 
-- child username (eg. charlie.brown)
-- child's address (eg. 219-1130, Ikanikeisaiganaibaai, Musashino-shi, Tokyo)
-- request free text as was input in the form
+## Screenshots
 
-Email sender should be set as do_not_reply@northpole.com, and sent to santa@northpole.com
+#### web view
+![App Screenshot](https://raw.githubusercontent.com/veerasakthi/santa-app/main/evidence_screenshots/01_pc_view.png)
 
-## Tips and detailed instructions:
+#### mobile view
+![App Screenshot](https://raw.githubusercontent.com/veerasakthi/santa-app/main/evidence_screenshots/02_mob_view.png)
 
-- Somebody started to work on the app, but left it unfinished and did not use any modern technology. We added React for you to have a clean base but feel free to use any other technology you might prefer.
-- The UI and UX of the application for this challenge is not the priority. The pages/email do not need to look good, as long as they convey the information effectively.
-- You should fetch the JSON data at every form submission (consider it as an API).
-- For the sake of the challenge, you can keep the requests in-memory only.
-- You are encouraged to select and use npm packages as needed (you can add packages by editing package.json, or using `npm install` from the glitch console).
-- To get an smtp server for emails, go to https://ethereal.email/ and click "Create Ethereal Account".\
-  This will give you an account (take note of your username and pwd if you need to re-logon later) and smtp server (actual emails do not get delivered).\
-  Go to https://ethereal.email/messages to see the emails that have been received by the smtp server.
 
-## Some things we will look for in your submission
+## Run Locally
 
-- Code quality (readability, use of modern syntax...)
-- Does the app work as designed (cf. objectives overview)
-- App architecture (folder structure, configuration management...)
-- Documentation (why did you choose to change or add a package...)
+Clone the project
 
-## Tips on usage of glitch
+```bash
+  git clone https://github.com/veerasakthi/santa-app
+```
 
-Click `Show` in the header to see your app live. Updates to your code will instantly deploy and update live.
-When your app is running, you can access logs and console using the "Tools" button at the bottom left.
+### NodeJS
+Install dependencies
+```bash
+  npm install
+```
+
+Start the app
+```bash
+  npm run start
+```
+### ReactJS
+Navigate to react directory
+```bash
+  cd reactjs
+```
+
+Install dependencies
+```bash
+  npm install
+```
+Start the app
+```bash
+  npm run dev
+```
+
+
+# Hi, I'm veera! 👋
+
+- 🚀 [@veerasakthi](https://www.github.com/veerasakthi)
+
+I'm fullstack developer.

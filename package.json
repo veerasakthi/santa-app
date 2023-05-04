@@ -1,5 +1,5 @@
 {
-  "name": "new-santa-app",
+  "name": "santa-app-node",
   "version": "1.0.0",
   "description": "By default for anonymous users (non logged in), your code and app will only remain on glitch.com for 5 days. In order to not lose your challenge, please create a glitch.com account and log in to glitch.com before proceeding.",
   "main": "server.js",
@@ -22,9 +22,6 @@
   },
   "engines": {
     "node": "16.x"
-  },
-  "repository": {
-    "url": "https://github.com/alj-devops/santa-app"
   },
   "license": "MIT",
   "keywords": [

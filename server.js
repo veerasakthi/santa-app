@@ -6,28 +6,14 @@ const cors = require("cors");
 const cron = require("node-cron");
 const bodyParser = require("body-parser");
 
-const santaRouter = require("./server/router");
-const { mailSantaLetterCtrl } = require("./server/controller/santaController");
+const santaRouter = require("./nodejs/router");
+const { cronSantaLetterCtrl } = require("./nodejs/controller/santaController");
 
 const app = express();
 app.use(cors());
 
-// app.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*"); // update with allowed origin
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   next();
-// });
-// app.use(
-//   cors({
-//     origin: "*",
-//   })
-// );
-
 app.use(bodyParser.json());
-app.use(express.static("client/dist"));
+app.use(express.static("reactjs/dist"));
 
 // require env variables
 require("dotenv").config();
@@ -36,9 +22,9 @@ require("dotenv").config();
 app.use("/", santaRouter);
 
 // batch process
-cron.schedule("0,15,30,45 * * * * *", mailSantaLetterCtrl);
+cron.schedule("0,15,30,45 * * * * *", cronSantaLetterCtrl);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT || 3000, function () {
-  console.log("Your app is listening on port " + listener.address().port);
+  console.log("app is listening on port " + listener.address().port);
 });

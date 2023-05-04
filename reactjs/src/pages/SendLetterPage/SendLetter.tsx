@@ -18,7 +18,7 @@ const SendLetter = () => {
   async function sendWishToSanta() {
     setIsLoading(true);
 
-    const WISH_SEND_URI = "http://localhost:3000/santa/putSantaLetter";
+    const WISH_SEND_URI = "/santa/putSantaLetter";
     const requestBody = {
       userName: userName,
       wish: userWish,

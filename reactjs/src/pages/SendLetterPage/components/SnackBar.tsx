@@ -13,10 +13,10 @@ const SnackBarCommon = ({
     <>
       <Snackbar
         open={open}
-        autoHideDuration={3000}
+        autoHideDuration={6000}
         anchorOrigin={{
-          vertical: "top",
-          horizontal: "right",
+          vertical: "bottom",
+          horizontal: "center",
         }}
       >
         <Alert severity={status} sx={{ width: "100%" }}>

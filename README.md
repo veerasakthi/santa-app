@@ -14,11 +14,12 @@ A santa app is written in nodejs and reactjs. This app has no database but used 
 - once the mail is sent to santa `sent` bage in marked on screen
 - web view and mobile view support
 
-#### Could have been done 😭
+#### Could have been done 
 - API endpoint protection (JWT)
-- instead of expressJS could have used nestJS for better readability of code
+- instead of expressJS could have used nestJS for better readability of code (or express could have been written in typescript)
 - better documentation
 - unit testing
+- swagger api documentation
 
 ## FAQ
 
@@ -45,9 +46,11 @@ yes react is interesting.
 
 ## Demo
 
-https://pentagonal-denim-basket.glitch.me/  - Glitch Me
-
-https://github.com/veerasakthi/santa-app
+|             | Reference                            |
+| ----------------- | ------------------------------------------------------------ |
+| Glitch demo       |  https://pentagonal-denim-basket.glitch.me/                 |
+| Glitch source code |    https://glitch.com/edit/#!/pentagonal-denim-basket?path=README.md%3A1%3A0                            |
+| Github source code       | https://github.com/veerasakthi/santa-app
 
 ## Screenshots
 
@@ -96,4 +99,3 @@ Start the app
 
 - 🚀 [@veerasakthi](https://www.github.com/veerasakthi)
 
-I'm fullstack developer.

@@ -4,7 +4,7 @@ const santaRouter = express.Router();
 
 const {
   getSantaLetterCtrl,
-  putSantaLetterCtrl,
+  putSantaLetterCtrl
 } = require("./controller/santaController");
 
 // store santa gift request form children

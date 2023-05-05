@@ -1,4 +1,3 @@
-const fs = require("fs");
 const axios = require("axios");
 const { v4: uuidv4 } = require("uuid");
 const { API_ENDPOINT, CACHE_CONST } = require("../common/constants");
@@ -51,7 +50,7 @@ const getChildByUserName = async (userName) => {
       username: userInfo.username,
       uid: userInfo.uid,
       age: getAge(profileInfo.birthdate),
-      isChild: getAge(profileInfo.birthdate) <= 10 ? true : false,
+      isChild: getAge(profileInfo.birthdate) <= 10
     };
   }
 
@@ -81,7 +80,7 @@ async function generateNewLetter(reqBody) {
     username: childInfo.username,
     uid: childInfo.uid,
     age: childInfo.age,
-    isChild: childInfo.isChild,
+    isChild: childInfo.isChild
   };
 
   return newLetter;
@@ -106,7 +105,7 @@ const storeChildMail = async (requestBody) => {
     }
 
     // store it in local cache
-    let insertResult = await nodeCache.set(
+    const insertResult = await nodeCache.set(
       CACHE_CONST.SANTA_LETTER_KEY,
       santaLetters
     );
@@ -130,9 +129,9 @@ const markMailSentFlag = async (mailSentList) => {
 
     // loop through all list and mark only sent letters as DONE
     mailSentList.forEach(async (unsent) => {
-      //Find index of specific object using findIndex method.
-      let index = allCacheLetterList.findIndex(
-        (allLtr) => allLtr.letterId == unsent.letterId
+      // Find index of specific object using findIndex method.
+      const index = allCacheLetterList.findIndex(
+        (allLtr) => allLtr.letterId === unsent.letterId
       );
 
       // update letter's emailFlag property.
@@ -152,7 +151,7 @@ const markMailSentFlag = async (mailSentList) => {
  */
 const getAllSantaLetters = async () => {
   // get the existing stored letters stored in-memory
-  let santaLettersList = await nodeCache.get(CACHE_CONST.SANTA_LETTER_KEY);
+  const santaLettersList = await nodeCache.get(CACHE_CONST.SANTA_LETTER_KEY);
 
   if (santaLettersList && santaLettersList.length) {
     return santaLettersList;
@@ -165,14 +164,14 @@ const getAllSantaLetters = async () => {
  *
  */
 const getAllPendingLetters = async () => {
-  let santaLetterList = await nodeCache.get(CACHE_CONST.SANTA_LETTER_KEY);
+  const santaLetterList = await nodeCache.get(CACHE_CONST.SANTA_LETTER_KEY);
 
   if (!santaLetterList) {
     return [];
   }
 
   // filter the unsent letters to santa
-  let unsentLetters = santaLetterList.filter(function (letter) {
+  const unsentLetters = santaLetterList.filter(function (letter) {
     return letter.emailFlag == 0;
   });
 
@@ -187,13 +186,13 @@ const getAllPendingLetters = async () => {
  *
  */
 function getAge(birthDateStr) {
-  var today = new Date();
-  var birthDate = new Date(birthDateStr);
+  const today = new Date();
+  const birthDate = new Date(birthDateStr);
 
   // calc age based on year
-  var ageInYear = today.getFullYear() - birthDate.getFullYear();
+  let ageInYear = today.getFullYear() - birthDate.getFullYear();
   // decide age based on month
-  var diffMonth = today.getMonth() - birthDate.getMonth();
+  const diffMonth = today.getMonth() - birthDate.getMonth();
 
   // further breakdown with months
   if (
@@ -212,7 +211,7 @@ module.exports = {
   storeChildMail,
   getAllSantaLetters,
   getAllPendingLetters,
-  markMailSentFlag,
+  markMailSentFlag
 };
 
 /**

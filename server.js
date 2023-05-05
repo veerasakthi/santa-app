@@ -8,9 +8,11 @@ const bodyParser = require("body-parser");
 
 const santaRouter = require("./nodejs/router");
 const { cronSantaLetterCtrl } = require("./nodejs/controller/santaController");
+const { errorHandler } = require("./nodejs/utility/appUtils");
 
 const app = express();
 app.use(cors());
+app.use(errorHandler);
 
 app.use(bodyParser.json());
 app.use(express.static("reactjs/dist"));
@@ -26,5 +28,5 @@ cron.schedule("0,15,30,45 * * * * *", cronSantaLetterCtrl);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT || 3000, function () {
-  console.log("app is listening on port " + listener.address().port);
+  console.log(`app is listening on port ' ${listener.address().port}`);
 });

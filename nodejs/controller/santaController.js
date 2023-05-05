@@ -40,5 +40,5 @@ const cronSantaLetterCtrl = asyncCatch(async (req, next) => {
 module.exports = {
   getSantaLetterCtrl,
   putSantaLetterCtrl,
-  cronSantaLetterCtrl,
+  cronSantaLetterCtrl
 };

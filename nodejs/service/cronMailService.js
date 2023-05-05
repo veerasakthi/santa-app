@@ -14,9 +14,9 @@ const putSantaMail = async (req) => {
     console.log(" ----------- CRON start -----------");
 
     // get all yet to send letters
-    let unsentLetters = await apiProvider.getAllPendingLetters();
+    const unsentLetters = await apiProvider.getAllPendingLetters();
 
-    if (unsentLetters.length == 0) {
+    if (unsentLetters.length === 0) {
       console.log(LOGGER.NO_EMAILS_TO_PROCESS);
       console.log("----------- SKIP end... -----------");
       return true;
@@ -61,5 +61,5 @@ function getMailBody(letter) {
 }
 
 module.exports = {
-  putSantaMail,
+  putSantaMail
 };

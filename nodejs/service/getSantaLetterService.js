@@ -19,5 +19,5 @@ const getSantaLetter = async (req) => {
 };
 
 module.exports = {
-  getSantaLetter,
+  getSantaLetter
 };

@@ -1,5 +1,3 @@
-// @ts-check
-
 /**
  * success response
  *
@@ -7,19 +5,18 @@
  * @param {Object} data that contains the response data
  * @return {any} response object
  */
- function success(msg, data) {
+function success(msg, data) {
+  // result object contains statuscode, status, message, result obj
+  const result = {
+    statusCode: 200,
+    status: "success",
+    isError: false,
+    message: msg,
+    data: data
+  };
 
-    // result object contains statuscode, status, message, result obj
-    let result = new Object({
-        statusCode: 200,
-        status: "success",
-        isError: false,
-        message : msg,
-        data : data
-    });
-
-    // return common result
-    return result;
+  // return common result
+  return result;
 }
 
 /**
@@ -30,21 +27,20 @@
  * @return {any} response object
  */
 function error(msg, data) {
+  // result object contains statuscode, status, message, result obj
+  const result = {
+    statusCode: 200,
+    status: "error",
+    isError: true,
+    message: msg,
+    data: data
+  };
 
-    // result object contains statuscode, status, message, result obj
-    let result = new Object({
-        statusCode: 200,
-        status: "error",
-        isError : true,
-        message : msg,
-        data : data
-    });
-
-    // return common result
-    return result;
+  // return common result
+  return result;
 }
 
 module.exports = {
-    success,
-    error
+  success,
+  error
 };

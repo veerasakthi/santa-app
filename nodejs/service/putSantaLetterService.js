@@ -70,5 +70,5 @@ async function userValidationCheck(reqBody) {
 }
 
 module.exports = {
-  putSantaLetter,
+  putSantaLetter
 };

@@ -16,7 +16,8 @@ const RES_MSG = {
   ERROR_OCCURED: "Error Occurred Sorry!",
   USERNAME_OR_WISH_CANNOT_EMPTY: "username or wish cannot be Empty!",
   CHILD_LESS_THAN_10_YEARS: "child is more than 10 years old ",
-  USER_DOESNOT_EXIST: "user doesn't exist !"
+  USER_DOESNOT_EXIST: "user doesn't exist !",
+  SOMETHING_WENT_WRONG: "something went wrong, try again later !"
 };
 
 const LOGGER = {

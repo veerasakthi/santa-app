@@ -6,12 +6,13 @@ const cors = require("cors");
 const cron = require("node-cron");
 const bodyParser = require("body-parser");
 
+const { errorHandler } = require("./nodejs/utility/appUtils");
 const santaRouter = require("./nodejs/router");
 const { cronSantaLetterCtrl } = require("./nodejs/controller/santaController");
-const { errorHandler } = require("./nodejs/utility/appUtils");
 
 const app = express();
 app.use(cors());
+// all errors reach here
 app.use(errorHandler);
 
 app.use(bodyParser.json());

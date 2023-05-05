@@ -28,10 +28,10 @@ const putSantaMail = async (req) => {
       const emailBody = getMailBody(letter);
       // send email
       await mailSender(emailSubject, emailBody);
-    });
 
-    // mark as email sent flag
-    await apiProvider.markMailSentFlag(unsentLetters);
+      // mark as email sent flag [DONE]
+      await apiProvider.markMailSentFlag(letter);
+    });
 
     console.log(`mail sent count = ${unsentLetters.length}`);
     console.log("----------- CRON end -----------");
@@ -41,11 +41,11 @@ const putSantaMail = async (req) => {
   }
 };
 
-function getMailSubject(letter) {
+function getMailSubject (letter) {
   return `wish from child ${letter.username}`;
 }
 
-function getMailBody(letter) {
+function getMailBody (letter) {
   return `
             Dear Santa!
     

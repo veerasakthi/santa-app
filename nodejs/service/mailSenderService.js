@@ -8,7 +8,7 @@ const { LOGGER } = require("../common/constants");
  * @param {string} body body of the email
  * @return {any} mail response
  */
-async function mailSender(subject, body) {
+async function mailSender (subject, body) {
   try {
     // create a transporter
     const transporter = getTransporter();
@@ -23,10 +23,11 @@ async function mailSender(subject, body) {
     return result;
   } catch (err) {
     console.log(err);
+    throw new Error(err);
   }
 }
 
-function getTransporter() {
+function getTransporter () {
   const EMAIL_PORT = process.env.EMAIL_PORT;
   const EMAIL_HOST = process.env.EMAIL_HOST;
   const EMAIL_AUTH_USER = process.env.EMAIL_AUTH_USER;
@@ -47,7 +48,7 @@ function getTransporter() {
   });
 }
 
-function getMailOption(subject, body) {
+function getMailOption (sub, body) {
   const EMAIL_FROM = process.env.EMAIL_FROM;
   const EMAIL_TO = process.env.EMAIL_TO;
 
@@ -59,7 +60,7 @@ function getMailOption(subject, body) {
   return {
     from: EMAIL_FROM?.toString(),
     to: EMAIL_TO?.toString(),
-    subject: subject,
+    subject: sub,
     text: body
   };
 }

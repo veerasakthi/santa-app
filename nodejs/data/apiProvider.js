@@ -32,14 +32,14 @@ const getChildByUserName = async (userName) => {
 
   // get user info
   const usersList = await getUserList();
-  const userInfo = usersList.find((user) => user.username == userName);
+  const userInfo = usersList.find((user) => user.username === userName);
 
   // user exist check
   if (userInfo) {
     // get profile info
     const profileList = await getProfileList();
     const profileInfo = profileList.find(
-      (profile) => profile.userUid == userInfo.uid
+      (profile) => profile.userUid === userInfo.uid
     );
 
     // generate all child info
@@ -61,7 +61,7 @@ const getChildByUserName = async (userName) => {
  * get new letter info
  *
  */
-async function generateNewLetter(reqBody) {
+async function generateNewLetter (reqBody) {
   // get child info
   const childInfo = await getChildByUserName(reqBody.userName);
   // generate new letter
@@ -95,6 +95,7 @@ const storeChildMail = async (requestBody) => {
     // get the existing stored letters and append the new letter and store it in-memory
     let santaLetters = [];
     const newLetter = await generateNewLetter(requestBody);
+    // eslint-disable-next-line prefer-const
     let cacheList = await nodeCache.get(CACHE_CONST.SANTA_LETTER_KEY);
 
     if (cacheList && cacheList.length) {
@@ -122,22 +123,18 @@ const storeChildMail = async (requestBody) => {
  * make mail sent flag as DONE.
  *
  */
-const markMailSentFlag = async (mailSentList) => {
+const markMailSentFlag = async (sentLetter) => {
   try {
-    // update email sent flag process
+    // get all the letters in memory
+    // eslint-disable-next-line prefer-const
     let allCacheLetterList = await nodeCache.get(CACHE_CONST.SANTA_LETTER_KEY);
 
-    // loop through all list and mark only sent letters as DONE
-    mailSentList.forEach(async (unsent) => {
-      // Find index of specific object using findIndex method.
-      const index = allCacheLetterList.findIndex(
-        (allLtr) => allLtr.letterId === unsent.letterId
-      );
-
-      // update letter's emailFlag property.
-      allCacheLetterList[index].emailFlag = 1;
-    });
-
+    // find the index of the sent letter
+    const index = allCacheLetterList.findIndex(
+      (allLtr) => allLtr.letterId === sentLetter.letterId
+    );
+    // update letter's emailFlag property.
+    allCacheLetterList[index].emailFlag = 1; // marked as sent
     // update the cache
     await nodeCache.set(CACHE_CONST.SANTA_LETTER_KEY, allCacheLetterList);
   } catch (err) {
@@ -172,7 +169,7 @@ const getAllPendingLetters = async () => {
 
   // filter the unsent letters to santa
   const unsentLetters = santaLetterList.filter(function (letter) {
-    return letter.emailFlag == 0;
+    return letter.emailFlag === 0;
   });
 
   if (unsentLetters && unsentLetters.length) {
@@ -185,7 +182,7 @@ const getAllPendingLetters = async () => {
  * getAge
  *
  */
-function getAge(birthDateStr) {
+function getAge (birthDateStr) {
   const today = new Date();
   const birthDate = new Date(birthDateStr);
 
@@ -197,7 +194,7 @@ function getAge(birthDateStr) {
   // further breakdown with months
   if (
     diffMonth < 0 ||
-    (diffMonth == 0 && today.getDate() < birthDate.getDate())
+    (diffMonth === 0 && today.getDate() < birthDate.getDate())
   ) {
     ageInYear--;
   }

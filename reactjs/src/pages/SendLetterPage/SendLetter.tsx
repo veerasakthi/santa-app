@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Button, CircularProgress, Divider, TextField } from "@mui/material";
 import React, { useState } from "react";
+import { API_ENDPOINT } from "../../common/UrlConstants";
 import { sleep } from "./helper";
 import "./SendLetterStyles.css";
 import LetterList from "./components/LetterList";
@@ -15,34 +16,31 @@ const SendLetter = () => {
   const [lastErrorMsg, setLastErrorMsg] = React.useState("");
 
   // send letter to santa function
-  async function sendWishToSanta() {
+  async function sendWishToSanta () {
     setIsLoading(true);
 
-    const WISH_SEND_URI = "/santa/putSantaLetter";
     const requestBody = {
-      userName: userName,
-      wish: userWish,
+      userName,
+      wish: userWish
     };
-    var response = await axios.post(WISH_SEND_URI, requestBody);
+    // send api request
+    const response = await axios.post(API_ENDPOINT.WISH_SEND_URI, requestBody);
 
-    if (response.status == 200 && response.data.status == "success") {
-      // sleep for loading
-      await sleep(2);
+    if (response.status === 200 && response.data.status === "success") {
       // clear the values from fields
       setUserName("");
       setUserWish("");
-      // show alert
+      // show & hide alert
       setOpenSucess(true);
-      // hide alert
       await sleep(2);
       setOpenSucess(false);
     } else {
-      // show alert
+      // set error msg
       setLastErrorMsg(
         response.data.message ? response.data.message : "something went wrong"
       );
+      // show & hide alert
       setOpenError(true);
-      // hide alert
       await sleep(2);
       setOpenError(false);
     }

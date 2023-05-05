@@ -6,11 +6,12 @@ import {
   ListItemText,
   Typography,
   Divider,
-  Chip,
+  Chip
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { API_ENDPOINT } from "../../../common/UrlConstants";
 
 const LetterList = () => {
   const [santaLetterList, setSantaLetterList] = useState([]);
@@ -18,31 +19,25 @@ const LetterList = () => {
   useEffect(() => {
     // get letter list on init
     getLetterList();
-
     // reload at frequent interval
-    const interval = setInterval(() => {
-      // refresh screen every 10 seconds
-      getLetterList();
-    }, 10000); // update count every 10 seconds
-
-    return () => clearInterval(interval);
+    const interval = setInterval(() => getLetterList(), 7000); // update count every 7 seconds
+    return () => clearInterval(interval); // clear interval
   }, []);
 
-  function getLetterList() {
-    const LETTER_LIST_URI = "/santa/getLetters";
+  function getLetterList () {
+    console.log("get letters api called...");
     axios
-      .post(LETTER_LIST_URI, {})
+      .post(API_ENDPOINT.LETTER_LIST_URI, {})
       .then(function (response) {
         // handle response here
-        console.log(response);
-        if (response.status == 200 && response.data.status == "success") {
+        if (response.status === 200 && response.data.status === "success") {
           if (response.data.data.length > 0) {
             setSantaLetterList(response.data.data);
           }
         }
       })
       .catch(function (error) {
-        //handle errors
+        // handle errors
         console.log(error);
       });
   }
@@ -82,7 +77,7 @@ const LetterList = () => {
                   }
                 />
 
-                {letter["emailFlag"] == 1 && (
+                {letter["emailFlag"] === 1 && (
                   <Chip color="success" label="sent" size="small" />
                 )}
               </ListItem>

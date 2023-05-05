@@ -3,7 +3,7 @@ import { Snackbar, Alert, AlertColor } from "@mui/material";
 const SnackBarCommon = ({
   open,
   status,
-  message,
+  message
 }: {
   open: boolean;
   status: AlertColor | undefined;
@@ -16,7 +16,7 @@ const SnackBarCommon = ({
         autoHideDuration={6000}
         anchorOrigin={{
           vertical: "bottom",
-          horizontal: "center",
+          horizontal: "center"
         }}
       >
         <Alert severity={status} sx={{ width: "100%" }}>

@@ -3,7 +3,16 @@
 
 A santa app is written in nodejs and reactjs. This app has no database but used a in-memory for storing the data that are received through APIs.
 
+## Demo
+
+|             | Reference                            |
+| ----------------- | ------------------------------------------------------------ |
+| Glitch demo       |  https://pentagonal-denim-basket.glitch.me/                 |
+| Glitch source code |    https://glitch.com/edit/#!/pentagonal-denim-basket?path=README.md%3A1%3A0                            |
+| Github source code       | https://github.com/veerasakthi/santa-app
+
 ## Features
+
 #### Implemented
 - validation check (age, is registered child)
 - store the child's wish in-memory
@@ -21,17 +30,6 @@ A santa app is written in nodejs and reactjs. This app has no database but used 
 - unit testing
 - swagger api documentation
 
-## FAQ
-
-#### Do @veerasakthi know reactjs ?
-
-No I don't know react (I'm from angular and flutter background). 
-
-I completed a `crash course` online just before starting this challenge. (only features that are required for this challenge)
-
-#### Do I like react
-
-yes react is interesting.
 ## NPM pakages used
 
 | Packages             | Description                                               |
@@ -42,15 +40,6 @@ yes react is interesting.
 | node-cron         | job schedular                                                |
 | nodemailer        | for sending emails                                           |
 | uuid              | for unique id generation                                     |
-
-
-## Demo
-
-|             | Reference                            |
-| ----------------- | ------------------------------------------------------------ |
-| Glitch demo       |  https://pentagonal-denim-basket.glitch.me/                 |
-| Glitch source code |    https://glitch.com/edit/#!/pentagonal-denim-basket?path=README.md%3A1%3A0                            |
-| Github source code       | https://github.com/veerasakthi/santa-app
 
 ## Screenshots
 
@@ -94,6 +83,17 @@ Start the app
   npm run dev
 ```
 
+## FAQ
+
+#### Do @veerasakthi know reactjs ?
+
+No I don't know react (I'm from angular and flutter background). 
+
+I completed a `crash course` online just before starting this challenge. (only features that are required for this challenge)
+
+#### Do I like react
+
+yes react is interesting.
 
 # Hi, I'm veera! 👋
 
